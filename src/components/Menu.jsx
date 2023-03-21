@@ -16,11 +16,12 @@ export default function Menu() {
       p="4"
       minH="calc(100vh - 100px)"
       alignItems="flex-start"
+      position="relative"
     >
       <Text fontWeight={600} color="red.500" py="4">
         Main
       </Text>
-      <VStack w="full" alignItems="flex-start" spacing={0}>
+      <VStack w="full" h="full" alignItems="flex-start" spacing={0}>
         {menuList.map((item, i) => (
           <Link to={item.link} key={i}>
             <HStack
@@ -41,6 +42,20 @@ export default function Menu() {
             </HStack>
           </Link>
         ))}
+        <Text
+          position="absolute"
+          bottom="8"
+          fontSize="12"
+          as="span"
+          align="center"
+          left="12"
+        >
+          &copy; {new Date().getFullYear()}{" "}
+          <Text as="span" fontWeight={600} color="red.500">
+            CNPartners
+          </Text>{" "}
+          All Right Reserved.
+        </Text>
       </VStack>
     </VStack>
   );
