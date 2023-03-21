@@ -92,6 +92,7 @@ export default function Home() {
             .fill("")
             .map((_, i) => (
               <Grid
+                key={i}
                 templateColumns={"0.5fr 1.5fr 2.5fr 1fr 1fr 1fr 1fr"}
                 w="full"
                 align="center"
