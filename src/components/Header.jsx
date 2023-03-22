@@ -19,6 +19,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import useUser from "../lib/useUser";
 import { logOut } from "../api";
 import { useQueryClient } from "react-query";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const queryClient = useQueryClient();
@@ -57,8 +58,12 @@ export default function Header() {
         {!userLoading ? (
           !isLoggedIn ? (
             <HStack spacing={8}>
-              <Text fontSize={"14"}>로그인</Text>
-              <Text fontSize={"14"}>회원가입</Text>
+              <Link to="/login">
+                <Text fontSize={"14"}>(임시)로그인</Text>
+              </Link>
+              <Link to="/signup">
+                <Text fontSize={"14"}>(임시)회원가입</Text>
+              </Link>
             </HStack>
           ) : (
             <HStack spacing={8}>

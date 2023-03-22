@@ -48,7 +48,7 @@ export default function Menu() {
           fontSize="12"
           as="span"
           align="center"
-          left="12"
+          left="10"
         >
           &copy; {new Date().getFullYear()}{" "}
           <Text as="span" fontWeight={600} color="red.500">
