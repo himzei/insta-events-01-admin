@@ -1,19 +1,59 @@
-import axios from "axios";
-import Cookie from "js-cookie";
+export const BASE_URL = "http://127.0.0.1:8000/api/v1";
 
-const instance = axios.create({
-  baseURL: "http://localhost:8000/api/v1/",
-  withCredentials: true,
-});
+export async function getChartResult() {
+  const response = await fetch(`${BASE_URL}/insta-admin/chart-result`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+}
 
-export const getMe = () =>
-  instance.get(`users/me`).then((response) => response.data);
+export async function getAdminStmap() {
+  const response = await fetch(`${BASE_URL}/insta-admin`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+}
 
-export const logOut = () =>
-  instance
-    .post(`users/log-out`, null, {
-      headers: {
-        "X-CSRFToken": Cookie.get("csrftoken") || "",
-      },
-    })
-    .then((response) => response.data);
+export async function getAdminResult() {
+  const response = await fetch(`${BASE_URL}/insta-admin/result`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+}
+
+export async function putKeywordsUpdate({ keywords }) {
+  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
+    method: "PUT",
+    body: JSON.stringify({
+      keywords,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+}
+
+export async function getKeywords() {
+  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const json = await response.json();
+  return json;
+}

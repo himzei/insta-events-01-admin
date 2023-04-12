@@ -8,27 +8,42 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaEyeSlash } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Logo from "../assets/png/logo.png";
 import { Helmet } from "react-helmet";
+import { useMutation } from "react-query";
+import { usernameSignUP } from "../api";
 
 export default function SignUp() {
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm();
+  const toast = useToast();
+  const navigate = useNavigate();
+  const mutation = useMutation(usernameSignUP, {
+    onSuccess: () => {
+      toast({
+        title: "회원가입 되었습니다.",
+        status: "success",
+      });
+      reset();
+      navigate("/login");
+    },
+  });
 
-  const onSubmit = ({ username, email, password, password2 }) => {
-    console.log(username);
-    // mutation.mutate({ username, email, password, password2 });
+  const onSubmit = ({ name, email, password }) => {
+    mutation.mutate({ name, email, password });
   };
 
   const { pathname } = useLocation();
@@ -71,11 +86,11 @@ export default function SignUp() {
               />
               <Input
                 type="text"
-                {...register("username", {
-                  required: "아이디를 입력해주세요",
+                {...register("name", {
+                  required: "이름을 입력해주세요",
                   minLength: {
-                    message: "아이디는 6자 이상 작성하셔야 합니다. ",
-                    value: 5,
+                    message: "이름은 2자 이상 작성하셔야 합니다. ",
+                    value: 2,
                   },
                 })}
                 placeholder="Full Name"

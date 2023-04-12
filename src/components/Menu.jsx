@@ -2,11 +2,13 @@ import { HStack, Image, Text, VStack } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import Live from "../assets/svg/live.svg";
 import Result from "../assets/svg/result.svg";
+import Settings from "../assets/svg/settings.svg";
 
 export default function Menu() {
   const menuList = [
     { name: "실시간 인스타 인증", link: "/", svg: Live },
     { name: "인스타 인증 참가자 분석", link: "/result", svg: Result },
+    { name: "설정", link: "/settings", svg: Settings },
   ];
   const { pathname } = useLocation();
   return (
