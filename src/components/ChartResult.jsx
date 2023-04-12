@@ -63,7 +63,7 @@ export default function ChartResult() {
           },
           axisBorder: {
             show: true,
-            color: "#008FFB",
+            color: "#40a0fc",
           },
           labels: {
             style: {
@@ -71,7 +71,7 @@ export default function ChartResult() {
             },
           },
           title: {
-            text: "Income (thousand crores)",
+            text: "좋아요",
             style: {
               color: "#008FFB",
             },
@@ -86,17 +86,17 @@ export default function ChartResult() {
           },
           axisBorder: {
             show: true,
-            color: "#008FFB",
+            color: "#4fe6a5",
           },
           labels: {
             style: {
-              colors: "#008FFB",
+              colors: "#4fe6a5",
             },
           },
           title: {
-            text: "Income (thousand crores)",
+            text: "친구소환",
             style: {
-              color: "#008FFB",
+              color: "#4fe6a5",
             },
           },
           tooltip: {
@@ -111,17 +111,17 @@ export default function ChartResult() {
           },
           axisBorder: {
             show: true,
-            color: "#00E396",
+            color: "#fdbb4a",
           },
           labels: {
             style: {
-              colors: "#00E396",
+              colors: "#fdbb4a",
             },
           },
           title: {
-            text: "Operating Cashflow (thousand crores)",
+            text: "댓글",
             style: {
-              color: "#00E396",
+              color: "#fdbb4a",
             },
           },
         },
@@ -133,17 +133,17 @@ export default function ChartResult() {
           },
           axisBorder: {
             show: true,
-            color: "#FEB019",
+            color: "#ff6377",
           },
           labels: {
             style: {
-              colors: "#FEB019",
+              colors: "#ff6377",
             },
           },
           title: {
-            text: "Revenue (thousand crores)",
+            text: "친구소환",
             style: {
-              color: "#FEB019",
+              color: "#ff6377",
             },
           },
         },
