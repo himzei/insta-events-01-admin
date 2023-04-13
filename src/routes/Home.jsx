@@ -20,10 +20,20 @@ import { useQuery } from "react-query";
 import { BASE_URL, getAdminStmap } from "../api";
 import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Pagination from "react-js-pagination";
 
 export default function Home() {
-  const { data } = useQuery(["stampAdmin"], getAdminStmap);
+  const [page, setPage] = useState(1);
+  const { data } = useQuery(["stampAdmin", page], getAdminStmap);
   const gridTemplate = "1fr 1fr 1fr 1fr 1fr 1fr 1fr";
+  let totalPage = data?.count;
+  console.log(totalPage);
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
   return (
     <>
       <Layout title="실시간 인스타 인증">
@@ -133,6 +143,16 @@ export default function Home() {
                 <GridItem>{item.friends_cnt}</GridItem>
               </Grid>
             ))}
+            <Box>
+              <Pagination
+                activePage={page}
+                totalItemsCount={totalPage}
+                pageRangeDisplayed={7}
+                prevPageText={"‹"}
+                nextPageText={"›"}
+                onChange={handlePageChange}
+              />
+            </Box>
             <Box h="80px" />
           </VStack>
         </VStack>

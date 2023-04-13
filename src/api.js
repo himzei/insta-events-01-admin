@@ -1,5 +1,6 @@
 export const BASE_URL =
   "https://port-0-insta-stamp-test-by52fb24lbbufx8n.gksl2.cloudtype.app/api/v1";
+// export const BASE_URL = "http://127.0.0.1:8000/api/v1";
 
 export async function getChartResult() {
   const response = await fetch(`${BASE_URL}/insta-admin/chart-result`, {
@@ -12,8 +13,9 @@ export async function getChartResult() {
   return json;
 }
 
-export async function getAdminStmap() {
-  const response = await fetch(`${BASE_URL}/insta-admin`, {
+export async function getAdminStmap(page) {
+  const currentPage = page.queryKey[1];
+  const response = await fetch(`${BASE_URL}/insta-admin?page=${currentPage}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -23,13 +25,17 @@ export async function getAdminStmap() {
   return json;
 }
 
-export async function getAdminResult() {
-  const response = await fetch(`${BASE_URL}/insta-admin/result`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export async function getAdminResult(page) {
+  const currentPage = page.queryKey[1];
+  const response = await fetch(
+    `${BASE_URL}/insta-admin/result?page=${currentPage}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const json = await response.json();
   return json;
 }

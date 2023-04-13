@@ -22,11 +22,20 @@ import { BASE_URL, getAdminResult } from "../api";
 import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
 import ChartResult from "../components/ChartResult";
+import React, { useState } from "react";
+import Pagination from "react-js-pagination";
+import "../components/pagination/Paging.css";
 
 export default function Result() {
+  const [page, setPage] = useState(1);
   const gridTemplate = "1fr 1fr 1fr 1fr 1fr";
-  const { data } = useQuery(["instaAdmin"], getAdminResult);
+  const { data } = useQuery(["instaAdmin", page], getAdminResult);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const totalPage = data?.totalPage;
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
 
   return (
     <>
@@ -64,7 +73,7 @@ export default function Result() {
               <GridItem>댓글(개)</GridItem>
               <GridItem>친구소환(명)</GridItem>
             </Grid>
-            {data?.map((item, index) => (
+            {data?.data?.map((item, index) => (
               <Grid
                 key={index}
                 templateColumns={gridTemplate}
@@ -86,6 +95,17 @@ export default function Result() {
                 <GridItem>{item?.total_friends}</GridItem>
               </Grid>
             ))}
+            <Box>
+              <Pagination
+                activePage={page}
+                totalItemsCount={totalPage}
+                pageRangeDisplayed={7}
+                prevPageText={"‹"}
+                nextPageText={"›"}
+                onChange={handlePageChange}
+              />
+            </Box>
+
             <Box h="80px" />
           </VStack>
         </VStack>
