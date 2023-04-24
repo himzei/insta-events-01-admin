@@ -17,18 +17,25 @@ import Friends from "../assets/svg/friends.svg";
 
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
-import { BASE_URL, getAdminStmap } from "../api";
+import { BASE_URL, getAdminStmap, getSettings } from "../api";
 import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Pagination from "react-js-pagination";
+import { ADM_EVENTS_NAME } from "../lib/settings";
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const { data } = useQuery(["stampAdmin", page], getAdminStmap);
+  const { data: getHashtags } = useQuery(
+    ["settings_keywords", ADM_EVENTS_NAME],
+    getSettings
+  );
+
+  const hashtagsId = getHashtags?.data?.hashtags_selected;
+  const { data } = useQuery(["stampAdmin", page, hashtagsId], getAdminStmap);
+
   const gridTemplate = "1fr 1fr 1fr 1fr 1fr 1fr 1fr";
   let totalPage = data?.count;
-  console.log(totalPage);
 
   const handlePageChange = (page) => {
     setPage(page);

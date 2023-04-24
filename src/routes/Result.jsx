@@ -18,18 +18,28 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
-import { BASE_URL, getAdminResult } from "../api";
+import { BASE_URL, getAdminResult, getSettings } from "../api";
 import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
 import ChartResult from "../components/ChartResult";
 import React, { useState } from "react";
 import Pagination from "react-js-pagination";
 import "../components/pagination/Paging.css";
+import { ADM_EVENTS_NAME } from "../lib/settings";
 
 export default function Result() {
   const [page, setPage] = useState(1);
   const gridTemplate = "1fr 1fr 1fr 1fr 1fr";
-  const { data } = useQuery(["instaAdmin", page], getAdminResult);
+
+  // 추후 useUser 들어갈 내용
+  const { data: getHashtags } = useQuery(
+    ["settings_keywords", ADM_EVENTS_NAME],
+    getSettings
+  );
+  const hashtagsId = getHashtags?.data?.hashtags_selected;
+  const { data } = useQuery(["instaAdmin", page, hashtagsId], getAdminResult);
+
+  console.log(data);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const totalPage = data?.totalPage;
 
