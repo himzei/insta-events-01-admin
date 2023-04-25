@@ -1,6 +1,6 @@
-export const BASE_URL =
-  "https://port-0-insta-stamp-test-by52fb24lbbufx8n.gksl2.cloudtype.app/api/v1";
-// export const BASE_URL = "http://127.0.0.1:8000/api/v1";
+// export const BASE_URL =
+//   "https://port-0-insta-stamp-test-by52fb24lbbufx8n.gksl2.cloudtype.app/api/v1";
+export const BASE_URL = "http://127.0.0.1:8000/api/v1";
 
 export async function putHashtagsSelected({ hashtag, dataId }) {
   const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords/`, {
