@@ -4,24 +4,17 @@ import {
   Grid,
   GridItem,
   HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Select,
   Text,
   VStack,
-  useDisclosure,
+  // useDisclosure,
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { useQuery } from "react-query";
 import { BASE_URL, getAdminResult, getSettings } from "../api";
 import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
-import ChartResult from "../components/ChartResult";
+// import ChartResult from "../components/ChartResult";
 import React, { useState } from "react";
 import Pagination from "react-js-pagination";
 import "../components/pagination/Paging.css";
@@ -39,8 +32,8 @@ export default function Result() {
   const hashtagsId = getHashtags?.data?.hashtags_selected;
   const { data } = useQuery(["instaAdmin", page, hashtagsId], getAdminResult);
 
-  console.log(data);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // console.log(data);
+  // const { isOpen, onOpen, onClose } = useDisclosure();
   const totalPage = data?.totalPage;
 
   const handlePageChange = (page) => {
@@ -53,9 +46,9 @@ export default function Result() {
         <VStack w="98%" spacing={16}>
           <HStack justifyContent="space-between" w="full" py="4">
             <HStack>
-              <Button colorScheme={"red"} onClick={onOpen}>
+              {/* <Button colorScheme={"red"} onClick={onOpen}>
                 <Text>차트 다운로드</Text>
-              </Button>
+              </Button> */}
               <Link to={`${BASE_URL}/insta-admin/csv-result`}>
                 <Button colorScheme={"green"} variant="outline">
                   <Text>CSV 다운로드</Text>
@@ -120,7 +113,7 @@ export default function Result() {
           </VStack>
         </VStack>
       </Layout>
-      <Modal size={"7xl"} isOpen={isOpen} onClose={onClose}>
+      {/* <Modal size={"7xl"} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>차트 확인하기</ModalHeader>
@@ -137,7 +130,7 @@ export default function Result() {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

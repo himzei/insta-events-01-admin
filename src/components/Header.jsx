@@ -1,29 +1,12 @@
-import {
-  Avatar,
-  Box,
-  HStack,
-  Image,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-} from "@chakra-ui/react";
+import { HStack, Image } from "@chakra-ui/react";
 import Logo from "../assets/png/logo.png";
-import { IoIosNotifications } from "react-icons/io";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <HStack w="full" justifyContent="center" h="80px">
       <HStack w="full" px="4" justifyContent="space-between">
         <Image w="120px" src={Logo} />
-        <Box>
+        {/* <Box>
           <InputGroup>
             <InputRightElement
               children={
@@ -44,8 +27,8 @@ export default function Header() {
               _placeholder={{ color: "#B0CAD1" }}
             />
           </InputGroup>
-        </Box>
-        <HStack spacing={8}>
+        </Box> */}
+        {/* <HStack spacing={8}>
           <Link to="/login">
             <Text fontSize={"14"}>(임시)로그인</Text>
           </Link>
@@ -68,7 +51,7 @@ export default function Header() {
               <MenuItem>로그아웃</MenuItem>
             </MenuList>
           </Menu>
-        </HStack>
+        </HStack> */}
       </HStack>
     </HStack>
   );
