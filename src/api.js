@@ -4,7 +4,7 @@ export const BASE_URL =
     : "https://port-0-insta-events-01-e9btb72mlh5nv7yh.sel4.cloudtype.app/api/v1";
 
 export async function putHashtagsSelected({ hashtag, dataId }) {
-  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords/`, {
+  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
     method: "PUT",
     body: JSON.stringify({
       hashtag,
@@ -62,7 +62,7 @@ export async function getAdminResult(page) {
 }
 
 export async function postKeywordsUpdate({ keywords, dataId }) {
-  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords/`, {
+  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
     method: "POST",
     body: JSON.stringify({
       keywords,
@@ -76,17 +76,14 @@ export async function postKeywordsUpdate({ keywords, dataId }) {
   return json;
 }
 
-export async function getSettings(params) {
-  const events_name = params.queryKey[1];
-  const response = await fetch(
-    `${BASE_URL}/insta-admin/edit-keywords?name=${events_name}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+export async function getSettings() {
+  // const events_name = params.queryKey[1];
+  const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   const json = await response.json();
   return json;
 }

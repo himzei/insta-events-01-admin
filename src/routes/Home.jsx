@@ -22,17 +22,14 @@ import { numberFormat, timeFormat } from "../lib/utils";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Pagination from "react-js-pagination";
-import { ADM_EVENTS_NAME } from "../lib/settings";
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const { data: getHashtags } = useQuery(
-    ["settings_keywords", ADM_EVENTS_NAME],
-    getSettings
-  );
+  const { data: getHashtags } = useQuery(["settings_keywords"], getSettings);
 
   const hashtagsId = getHashtags?.data?.hashtags_selected;
   const { data } = useQuery(["stampAdmin", page, hashtagsId], getAdminStmap);
+  console.log(data);
 
   const gridTemplate = "1fr 1fr 1fr 1fr 1fr 1fr 1fr";
   let totalPage = data?.count;
