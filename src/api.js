@@ -3,6 +3,23 @@ export const BASE_URL =
     ? "http://127.0.0.1:8000/api/v1"
     : "https://port-0-insta-events-01-e9btb72mlh5nv7yh.sel4.cloudtype.app/api/v1";
 
+export async function usernameLogin({ username, password }) {
+  console.log(username, password);
+  // const response = await fetch(`${BASE_URL}/users/login`, {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     username,
+  //     password,
+  //   }),
+  //   headers: {
+  //     "X-CSRFToken": Cookie.get("csrftoken") || "",
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+  // const json = await response.json();
+  // return json;
+}
+
 export async function putHashtagsSelected({ hashtag, dataId }) {
   const response = await fetch(`${BASE_URL}/insta-admin/edit-keywords`, {
     method: "PUT",

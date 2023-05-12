@@ -4,15 +4,25 @@ import NotFound from "./routes/NotFound";
 import Result from "./routes/Result";
 import Root from "./routes/Root";
 import Settings from "./routes/Settings";
+import LogIn from "./routes/LogIn";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    children: [
+      {
+        path: "",
+        element: <LogIn />,
+      },
+    ],
+  },
   {
     path: "/",
     element: <Root />,
     errorElement: <NotFound />,
     children: [
       {
-        path: "",
+        path: "/home",
         element: <Home />,
       },
       {
