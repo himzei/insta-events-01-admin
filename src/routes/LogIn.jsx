@@ -47,6 +47,13 @@ export default function LogIn() {
 
   const onSubmit = ({ username, password }) => {
     // console.log(email, password);
+    if (username !== "test" && password !== "1111") {
+      toast({
+        title: "로그인 싶래",
+        status: "warning",
+      });
+      return false;
+    }
     mutation.mutate({ username, password });
   };
 

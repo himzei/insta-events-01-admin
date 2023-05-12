@@ -5,6 +5,9 @@ export const BASE_URL =
 
 export async function usernameLogin({ username, password }) {
   console.log(username, password);
+  if (username !== "test" && password !== "1111") {
+    return false;
+  }
   // const response = await fetch(`${BASE_URL}/users/login`, {
   //   method: "POST",
   //   body: JSON.stringify({
