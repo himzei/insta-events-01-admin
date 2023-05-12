@@ -6,7 +6,7 @@ import Settings from "../assets/svg/settings.svg";
 
 export default function Menu() {
   const menuList = [
-    { name: "실시간 인스타 인증", link: "/", svg: Live },
+    { name: "실시간 인스타 인증", link: "/home", svg: Live },
     { name: "인스타 인증 참가자 분석", link: "/result", svg: Result },
     { name: "설정", link: "/settings", svg: Settings },
   ];
