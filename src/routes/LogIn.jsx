@@ -49,8 +49,8 @@ export default function LogIn() {
     // console.log(email, password);
     if (username !== "test" && password !== "1111") {
       toast({
-        title: "로그인 싶래",
-        status: "warning",
+        title: "로그인 실패",
+        status: "error",
       });
       return false;
     }
