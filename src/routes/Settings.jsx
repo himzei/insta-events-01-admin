@@ -1,4 +1,4 @@
-import { Button, Input, Select, Text, VStack } from "@chakra-ui/react";
+import { Button, HStack, Input, Select, Text, VStack } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "react-query";
@@ -55,7 +55,10 @@ export default function Settings() {
         >
           <VStack w="full" alignItems="flex-start">
             <Text fontWeight={600}>행사명</Text>
-            <Input type="text" value={data?.data?.events_name} disabled />
+            <HStack>
+              <Input type="text" value={data?.data?.events_name} disabled />
+              <Text>{data?.data?.pk}</Text>
+            </HStack>
           </VStack>
           <VStack w="full" alignItems="flex-start">
             <Text fontWeight={600}>행사일정</Text>

@@ -3,6 +3,8 @@ export const BASE_URL =
     ? "http://127.0.0.1:8000/api/v1"
     : "https://port-0-insta-events-01-e9btb72mlh5nv7yh.sel4.cloudtype.app/api/v1";
 
+// export const BASE_URL = "https://insta-events.azurewebsites.net/api/v1";
+
 export async function usernameLogin({ username, password }) {
   console.log(username, password);
   if (username !== "test" && password !== "1111") {
@@ -44,6 +46,7 @@ export async function getChartResult() {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
   const json = await response.json();
   return json;
@@ -59,6 +62,7 @@ export async function getAdminStmap(page) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     }
   );
   const json = await response.json();
@@ -75,6 +79,7 @@ export async function getAdminResult(page) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
     }
   );
   const json = await response.json();
@@ -91,6 +96,7 @@ export async function postKeywordsUpdate({ keywords, dataId }) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
   const json = await response.json();
   return json;
@@ -103,6 +109,7 @@ export async function getSettings() {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
   const json = await response.json();
   return json;
